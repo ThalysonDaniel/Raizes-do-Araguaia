@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conceição do Araguaia | Raízes do Araguaia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../Imagens/LOGO - Raízes do Araguaia.png" type="image/png" sizes="32x32">
+    <style>
+ @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+    from { transform: translateX(50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromBottom {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.slide-in-left {
+    transform: translateX(-20px);
+}
+
+.slide-in-right {
+    transform: translateX(20px);
+}
+
+.slide-in-bottom {
+    transform: translateY(20px);
+}
+
+.appear {
+    opacity: 1 !important;
+    transform: translate(0, 0) !important;
+}
+
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #78B3A4;
+    z-index: 9999;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in;
+    pointer-events: none;
+}
+
+.animation-demo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #56704B;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.1;
+            color:#2B2318;
+            background-color: #78B3A4;
+            padding: 0;
+        }
+        header {
+           background: #56704B;
+            color: #f5f5f5;
+            text-align: center;
+            position: relative;
+            padding: 1rem;
+            z-index: 1000;
+        }
+
+        .header-content {
+            position: relative;
+            margin: 0 auto;
+            padding: 3rem 0;
+            border-radius: 0 0 12px 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                   background: linear-gradient(rgba(43, 35, 24, 0.7), rgba(86, 112, 75, 0.7)), 
+                        url('../Imagens/Praça\ Fundação\ \(6\).jpg') center/cover;    
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            margin: 1rem 0;
+            text-shadow: 1px 10px 5px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem;
+            font-weight: 500;
+        }
+
+        button {
+            background: transparent;
+            color: #F5F5F5;
+            border: 2px solid #F5F5F5;
+            border-radius: 8px;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(1px);
+        }
+
+        button:hover {
+            background: rgba(255, 255, 255, 0.85);
+            color: #56704B;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 1rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            background:  rgba(255, 255, 255, 0.85);
+            border-radius:8px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            text-align: justify;
+
+        }
+
+        .section-header {
+            background: #56704B;
+            padding: 2rem 2rem;
+            color: #F5F5F5;
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .section-header i {
+            font-size: 2rem;
+        }
+
+        .section-header h2 {
+            font-weight: 400;
+            font-size: 1.8rem;
+        }
+
+        .section-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .section-item {
+            max-width: 400px;
+            align-self: center;
+            border:  4px solid #56704B;
+            
+        }
+        .section-item-title{
+            align-self: center;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color:#2B2318;
+        }
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 20px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #2B2318;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1rem;
+            width: 100%;
+            clear: both;
+        }
+
+        .timeline-content {
+            position: relative;
+            width: 100%;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: #78B3A4;
+            box-shadow: 0 3px 10px rgba(43, 35, 24, 0.2);
+            margin-bottom: 3.5rem;
+        }
+
+        .timeline-year {
+            position: absolute;
+            width: 80px;
+            height: 60px;
+            background: #5D9E7E;
+            color: #F5F5F5;
+            border-radius: 55%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.5rem;
+            font-weight: bold;
+            left: 50%;
+            margin-left: -40px;
+            top: -30px;
+            z-index: 2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Linhas conectivas */
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #2B2318;
+            border-radius: 50%;
+            top: 15px;
+            left: 50%;
+            margin-left: -10px;
+            z-index: 1;
+        }
+
+        /* Responsividade */
+        @media (min-width: 768px) {
+            .timeline-content {
+                width: 45%;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content {
+                float: left;
+                margin-right: 5%;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-content {
+                float: right;
+                margin-left: 5%;
+            }
+            
+            .timeline-year {
+                top: 50%;
+                transform: translateY(-50%);
+                margin-top: -30px;
+            }
+            
+            .timeline-item::after {
+                top: 50%;
+                margin-top: -10px;
+            }
+        }
+
+        /* Melhorias para mobile */
+        @media (max-width: 767px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-year {
+                left: 30px;
+                margin-left: 0;
+                top: -30px;
+            }
+            
+            .timeline-item::after {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                margin-left: 60px;
+                width: calc(100% - 60px);
+            }
+        }
+
+        /* Efeitos de hover */
+        .timeline-content:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(43, 35, 24, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        /* Tipografia */
+        .timeline-content h3 {
+            color: #2B2318;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .timeline-content p {
+            color: #F5F5F5;
+            line-height: 1.5;
+            font-size: 1rem;
+        }
+        
+        footer {
+            background: #56704B;
+            color: #F5F5F5;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+            text-align: center;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        .footer-div {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .footer-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+            list-style: none;
+        }
+        
+        .footer-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .footer-list i {
+            color: #5D9E7E;
+        }
+        
+        hr {
+            border: 0;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+        
+        h6 {
+            padding-top: 1.5rem;
+            font-weight: 400;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        a {
+            color: #F5F5F5;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #5D9E7E;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Conceição do Araguaia</h1>
+            <p style="color:#F5F5F5">Conceição do Araguaia é uma cidade centenária às margens do Rio Araguaia, testemunha da fusão cultural que moldou essa joia amazônica.</p>
+            <a href="../Inicio/menu.html"><button>Voltar para o Início</button></a>
+        </div>
+    </header>
+    
+    <main>
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-landmark"></i>
+                <h2>Contexto Histórico</h2>
+            </div>
+            <div class="section-content">
+                <p>A história de Conceição do Araguaia tem início em 14 de abril de 1897, quando o frade dominicano francês Frei Gil Vilanova celebrou uma missa sob um pé de pequi às margens do Rio Araguaia. Essa missão visava catequizar os povos indígenas Kaiapó e Carajás, marcando a fundação do povoado. O nome da cidade é uma homenagem dupla: à padroeira Nossa Senhora da Conceição e ao rio Araguaia, que em tupi significa "rio do vale dos papagaios".<br>Em 1908, o governador do Pará, Augusto Montenegro, elevou o povoado à categoria de cidade para conter tentativas de anexação pelo estado de Goiás. A emancipação como município autônomo ocorreu em 31 de outubro de 1935, após um período de declínio econômico pós-Revolução de 1930, que afetou o comércio da borracha. Ao longo do século XX, seu território foi desmembrado para formar novos municípios, como Santana do Araguaia (1961), Redenção, Rio Maria, Xinguara (1982) e Floresta do Araguaia (1993).</p>
+                
+                <p>A cidade possui um legado histórico marcante, incluindo a Igreja Matriz de Nossa Senhora da Conceição, construída no estilo colonial, e vestígios arqueológicos de civilizações antigas. Além disso, Conceição do Araguaia foi palco de conflitos durante a Revolução de 1924 e a Guerrilha do Araguaia (décadas de 1960 e 1970), eventos que deixaram marcas na memória local.</p>
+                
+                <div class="timeline">
+    <div class="timeline-item">
+        <div class="timeline-year">1888</div>
+        <div class="timeline-content">
+            <h3>Primeiros Assentamentos</h3>
+            <p>Chegada de colonizadores e missionários às margens do Rio Araguaia, iniciando o contato com os povos Kaiapó e Carajás e estabelecendo as bases do futuro município.</p>
+        </div>
+    </div>
+    
+    <div class="timeline-item">
+        <div class="timeline-year">1897</div>
+        <div class="timeline-content">
+            <h3>Fundação do Povoado</h3>
+            <p>Em 14 de abril, Frei Gil Vilanova celebra missa sob um pé de pequi, marcando a fundação oficial do povoado de Conceição do Araguaia, nome que homenageia Nossa Senhora da Conceição e o rio Araguaia ("rio do vale dos papagaios" em tupi).</p>
+        </div>
+    </div>
+    
+    <div class="timeline-item">
+        <div class="timeline-year">1908</div>
+        <div class="timeline-content">
+            <h3>Elevação à Cidade</h3>
+            <p>O governador Augusto Montenegro eleva o povoado à categoria de cidade para evitar anexação por Goiás, consolidando sua importância estratégica na região.</p>
+        </div>
+    </div>
+   
+    <div class="timeline-item">
+        <div class="timeline-year">1935</div>
+        <div class="timeline-content">
+            <h3>Emancipação Municipal</h3>
+            <p>Em 31 de outubro, após o declínio econômico pós-Revolução de 1930, Conceição é emancipada como município autônomo do Pará.</p>
+        </div>
+    </div>
+    
+    <div class="timeline-item">
+        <div class="timeline-year">1961-1993</div>
+        <div class="timeline-content">
+            <h3>Desmembramentos Territoriais</h3>
+            <p>Seu território é dividido para criação de novos municípios: Santana do Araguaia (1961), Redenção, Rio Maria, Xinguara (1982) e Floresta do Araguaia (1993).</p>
+        </div>
+    </div>
+    
+    <div class="timeline-item">
+        <div class="timeline-year">1966-1974</div>
+        <div class="timeline-content">
+            <h3>Guerrilha do Araguaia</h3>
+            <p>Região torna-se epicentro do movimento de resistência ao regime militar, com operações que deixaram marcas profundas na memória coletiva local.</p>
+        </div>
+    </div>
+    
+    <div class="timeline-item">
+        <div class="timeline-year">1983</div>
+        <div class="timeline-content">
+            <h3>Patrimônio Cultural</h3>
+            <p>Inauguração da Galeria Pró-arte no prédio da antiga Usina Elétrica (1950), símbolo de resistência cultural que preserva acervos da história local.</p>
+        </div>
+    </div>
+</div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-church"></i>
+                <h2>Patrimônio Histórico</h2>
+            </div>
+            <div class="section-content">
+                <p>Conceição do Araguaia preserva importantes marcos históricos que contam a trajetória da cidade e sua importância regional:</p>
+                 <img src="../Imagens/Igreja Matriz.png" alt="Igreja Matriz" class="section-item">
+                <h3 style="margin: 2rem 0 1rem; color: #56704B;" class="section-item-title">Catedral Nossa Senhora da Conceição</h3>
+                <p>Construída em 1898, a Catedral é um dos mais importantes símbolos da cidade. Sua arquitetura colonial preserva características originais e abriga relíquias históricas, incluindo imagens sacras centenárias e elementos decorativos que remontam ao período de fundação da cidade. Hoje, este monumento simboliza não apenas a fé, mas a identidade coletiva de um povo que moldou Conceição do Araguaia sob a proteção de Nossa Senhora da Conceição.</p>
+                <img src="../Imagens/Praça Fundação (2).jpg" alt="Monumento da Fundação" class="section-item">
+                <h3 style="margin: 2rem 0 1rem; color: #56704B;" class="section-item-title">Obelisco - Monumento em alusão a fundação de Conceição do Araguaia</h3>
+                <p>O Obelisco de Conceição do Araguaia marca o local histórico onde Frei Gil Vilanova celebrou a primeira missa em 14 de abril de 1897, sob um frondoso pequizeiro às margens do Rio Araguaia. Este momento fundacional deu origem ao núcleo missionário que evoluiu para a atual cidade. O monumento em forma de pilar quadrangular alongado, terminando em pirâmide, simboliza o início da catequese e a fé que deu origem a Conceição do Araguaia, tornando-se um marco do patrimônio histórico local.</p>
+            </div>
+        </section>
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-map-signs"></i>
+                <h2>Geografia e Economia</h2>
+            </div>
+            <div class="section-content">
+                <p>Conceição do Araguaia está localizada no sudeste do Pará, às margens do Rio Araguaia, em uma região de transição entre a Amazônia e o Cerrado.</p>
+                
+                <h3 style="margin: 2rem 0 1rem; color: #56704B;">Dados Geográficos</h3>
+                <ul style="list-style-type: none;">
+                    <li style="margin-bottom: 0.8rem;"><i class="fas fa-map-marker-alt" style="color: #56704B; margin-right: 10px;"></i> <strong>Área:</strong> 5.829,482 km²</li>
+                    <li style="margin-bottom: 0.8rem;"><i class="fas fa-users" style="color: #56704B; margin-right: 10px;"></i> <strong>População:</strong> 47.864 habitantes</li>
+                    <li style="margin-bottom: 0.8rem;"><i class="fas fa-temperature-high" style="color: #56704B; margin-right: 10px;"></i> <strong>Clima:</strong> Tropical úmido, com temperatura média de 27°C</li>
+                </ul>
+                
+                <h3 style="margin: 2rem 0 1rem; color:#56704B;">Atividades Econômicas</h3>
+                <p>A economia local baseia-se principalmente no turismo, agricultura e pecuária. O potencial turístico da região tem crescido significativamente, especialmente durante o período de estiagem quando se formam as belas praias fluviais do Rio Araguaia.</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-div">
+            <h3>Entre em contato</h3>
+        <ul type="none" class="footer-list">
+            <li><i class="fa-sharp fa-solid fa-envelope"></i> Email: <a href="mailto:thalysondaniels.felix@gmail.com">thalysondaniels.felix@gmail.com</a></li>
+            <li><i class="fa-sharp fa-solid fa-user"></i> Instagram: <a href="https://www.instagram.com/thalyson.daniel/" target="_blank">@thalyson.daniel</a></li>
+            <li><i class="fa-sharp fa-solid fa-phone"></i> WhatsApp: <a href="https://wa.me/5594992797069" target="_blank">(94) 99279-7069</a></li>
+        </ul>
+    </div>
+
+<hr>
+     <h6>© 2023 Raízes do Araguaia - Todos os direitos reservados. | Desenvolvido para Conceição do Araguaia por <strong>Thalyson Daniel Sousa Felix</strong>, aluno do Instituto Federal do Pará</h6> 
+              
+
+    </footer>
+    <script src="../Inicio/animation.js"></script>
+</body>
+</html>

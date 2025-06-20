@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentos | Raízes do Araguaia - Conceição do Araguaia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+           @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .animate-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;;
+        }
+        
+        .animate-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #78B3A4;
+            z-index: 9999;
+            transform: translateY(100%);
+            transition: transform 0.4s ease-out;
+            pointer-events: none;
+        }      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #2B2318;
+            background-color: #78B3A4;
+            padding: 0;
+        }
+
+ 
+
+        header {
+            background: #56704B;
+            color: #f5f5f5;
+            text-align: center;
+            position: relative;
+            padding: 1rem;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            position: relative;
+            margin: 0 auto;
+            padding: 3rem 0;
+            background: linear-gradient(rgba(43, 35, 24, 0.7), rgba(86, 112, 75, 0.7)), 
+                        url('../Imagens/Beiradeiro\ \ \(2\).jpg') center/cover;
+            border-radius: 0 0 12px 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            letter-spacing: 1px;
+            margin: 1rem 0 1.5rem;
+            text-shadow: 1px 10px 5px rgba(0,0,0,0.2);
+            animation: slideUp 0.7s ease-out forwards;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            padding: 0 1rem;
+            font-weight: 500;
+            animation: slideUp 0.7s ease-out 0.1s forwards;
+            opacity: 0;
+        }
+
+        .back-btn {
+            background: transparent;
+            color:#f5f5f5;
+            border: 2px solid #f5f5f5;
+            border-radius: 8px;
+            padding: 0.8rem 1.8rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(1px);
+            animation: slideUp 0.7s ease-out 0.2s forwards;
+            opacity: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.85);
+            color: #56704B;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .filters {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+         
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: #F5F5F5;
+
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: #56704B;
+            color: white;
+            border-color:#56704B;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .category{
+            background:rgba(255, 255, 255, 0.85);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow:0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(86, 112, 75, 0.15);
+        }
+        
+        .category:hover {
+            box-shadow:0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+        }
+        
+        .category h2{
+            color: #56704B;
+            border-bottom: 3px solid #5D9E7E;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+        }
+        
+        .document{
+            padding: 1.5rem;
+            border-left: 4px solid #5D9E7E;
+            margin-bottom: 1.5rem;
+            background: rgba(93, 158, 126, 0.09);
+            border-radius: 0 6px 6px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .document:hover {
+            background: rgba(93, 158, 126, 0.15);
+            transform: translateX(5px);
+        }
+        
+        .document h3 {
+            color: #2B2318;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.4rem;
+        }
+        
+        .document p {
+            color: #524835;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .doc-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.2rem;
+            color:#56704B;
+            font-size: 1rem;
+        }
+        
+        .doc-info span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+        
+        .download-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #56704B;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .download-link:hover {
+            background: #5D9E7E;
+            transform: translateY(-2px);
+            box-shadow:0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        footer {
+            background: #56704B;
+            color: #F5F5F5;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+            text-align: center;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        .footer-div {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .footer-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+            list-style: none;
+        }
+        
+        .footer-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .footer-list i {
+            color: #5D9E7E;
+        }
+        
+        hr {
+            border: 0;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+        
+        h6 {
+            padding-top: 1.5rem;
+            font-weight: 400;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        a {
+            color: #F5F5F5;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #5D9E7E;
+        }
+
+        .download-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .download-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+        
+        .download-modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-icon {
+            font-size: 3.5rem;
+            color: #5D9E7E;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-content h3 {
+            color: #56704B;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .modal-content p {
+            color: #524835;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: rgba(93, 158, 126, 0.2);
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            width: 0;
+            background: #5D9E7E;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .modal-btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: #56704B;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #4a6141;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #56704B;
+            color: #56704B;
+        }
+        
+        .btn-outline:hover {
+            background: rgba(86, 112, 75, 0.1);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #524835;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-transition" id="pageTransition"></div>
+ 
+    <div class="download-modal" id="downloadModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <i class="fas fa-file-download modal-icon"></i>
+            <h3 id="modalTitle">Baixando Documento</h3>
+            <p id="modalDescription">O seu documento está sendo preparado para download...</p>
+            
+            <div class="progress-bar">
+                <div class="progress" id="downloadProgress"></div>
+            </div>
+            
+            <div class="modal-buttons">
+                <button class="modal-btn btn-primary" id="downloadBtn" style="display:none;">
+                    <i class="fas fa-download"></i> Baixar Agora
+                </button>
+                <button class="modal-btn btn-outline" id="cancelBtn">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    
+    <header>
+        <div class="header-content">
+            <h1>Documentos</h1>
+            <p>Encontre aqui documentos históricos, leis municipais e estudos sobre nossa região</p>
+            <a href="../Inicio/menu.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Voltar para o Início
+            </a>
+        </div>
+    </header>
+    
+    <main>
+        <div class="filters animate-in slide-in-bottom">
+            <button class="filter-btn active" data-filter="todos">Todos</button>
+            <button class="filter-btn" data-filter="historicos">Históricos</button>
+            <button class="filter-btn" data-filter="leis">Leis</button>
+            <button class="filter-btn" data-filter="estudos">Estudos</button>
+            <button class="filter-btn" data-filter="relatorios">Relatórios</button>
+        </div>
+        
+        <div class="category category-historicos animate-in slide-in-bottom">
+            <h2><i class="fas fa-landmark"></i> Documentos Históricos</h2>
+            
+            <div class="document" data-type="historicos" data-year="1897" data-author="Prefeitura Municipal">
+                <h3><i class="fas fa-file-alt"></i> Ata de Fundação do Município</h3>
+                <p>Documento histórico que registra a fundação oficial de Conceição do Araguaia em 1897, contendo os nomes dos fundadores e as primeiras decisões administrativas.</p>
+                <div class="doc-info">
+                    <span><i class="fas fa-calendar"></i> 1897</span>
+                    <span><i class="fas fa-file-pdf"></i> PDF (2.4 MB)</span>
+                    <span><i class="fas fa-user"></i> Prefeitura Municipal</span>
+                </div>
+                <a href="#" class="download-link" data-title="Ata de Fundação do Município" data-filename="ata-fundacao-1897.pdf">
+                    <i class="fas fa-download"></i> Baixar Documento
+                </a>
+            </div>
+            
+            <div class="document" data-type="historicos" data-year="1970" data-author="Comissão da Verdade">
+                <h3><i class="fas fa-book"></i> Memórias da Guerrilha do Araguaia</h3>
+                <p>Relatos históricos e documentos oficiais sobre o período da Guerrilha do Araguaia na região, incluindo depoimentos de moradores locais.</p>
+                <div class="doc-info">
+                    <span><i class="fas fa-calendar"></i> 1970-1974</span>
+                    <span><i class="fas fa-file-pdf"></i> PDF (5.1 MB)</span>
+                    <span><i class="fas fa-user"></i> Comissão da Verdade</span>
+                </div>
+                <a href="#" class="download-link" data-title="Memórias da Guerrilha do Araguaia" data-filename="guerrilha-araguaia-memorias.pdf">
+                    <i class="fas fa-download"></i> Baixar Documento
+                </a>
+            </div>
+        </div>
+        
+        <div class="category category-leis animate-in slide-in-bottom">
+            <h2><i class="fas fa-gavel"></i> Legislação Municipal</h2>
+            
+            <div class="document" data-type="leis" data-year="2023" data-author="Câmara Municipal">
+                <h3><i class="fas fa-balance-scale"></i> Lei Orgânica do Município</h3>
+                <p>Lei fundamental que estabelece a organização político-administrativa do município, competências dos poderes e direitos fundamentais dos cidadãos.</p>
+                <div class="doc-info">
+                    <span><i class="fas fa-calendar"></i> Atualizada 2023</span>
+                    <span><i class="fas fa-file-pdf"></i> PDF (3.8 MB)</span>
+                    <span><i class="fas fa-user"></i> Câmara Municipal</span>
+                </div>
+                <a href="#" class="download-link" data-title="Lei Orgânica do Município" data-filename="lei-organica-municipal.pdf">
+                    <i class="fas fa-download"></i> Baixar Documento
+                </a>
+            </div>
+            
+            <div class="document" data-type="leis" data-year="2021" data-author="Secretaria de Meio Ambiente">
+                <h3><i class="fas fa-tree"></i> Lei de Proteção Ambiental</h3>
+                <p>Normas para preservação ambiental e proteção de recursos hídricos do município, com diretrizes para desenvolvimento sustentável.</p>
+                <div class="doc-info">
+                    <span><i class="fas fa-calendar"></i> 2021</span>
+                    <span><i class="fas fa-file-pdf"></i> PDF (1.2 MB)</span>
+                    <span><i class="fas fa-user"></i> Secretaria de Meio Ambiente</span>
+                </div>
+                <a href="#" class="download-link" data-title="Lei de Proteção Ambiental" data-filename="lei-protecao-ambiental-2021.pdf">
+                    <i class="fas fa-download"></i> Baixar Documento
+                </a>
+            </div>
+        </div>
+        
+        <div class="category category-estudos animate-in slide-in-bottom">
+            <h2><i class="fas fa-graduation-cap"></i> Estudos Acadêmicos</h2>
+            
+            <div class="document" data-type="estudos" data-year="2022" data-author="UFPA">
+                <h3><i class="fas fa-university"></i> Demografia de Conceição do Araguaia</h3>
+                <p>Estudo detalhado sobre o perfil demográfico da população, incluindo análise de crescimento, distribuição etária e migração.</p>
+                <div class="doc-info">
+                    <span><i class="fas fa-calendar"></i> 2022</span>
+                    <span><i class="fas fa-file-pdf"></i> PDF (4.3 MB)</span>
+                    <span><i class="fas fa-user"></i> UFPA - Instituto de Ciências Sociais</span>
+                </div>
+                <a href="#" class="download-link" data-title="Demografia de Conceição do Araguaia" data-filename="demografia-conceicao-araguaia.pdf">
+                    <i class="fas fa-download"></i> Baixar Documento
+                </a>
+            </div>
+            
+            <div class="document" data-type="estudos" data-year="2023" data-author="UNIFESSPA">
+                <h3><i class="fas fa-water"></i> Impacto do Turismo no Rio Araguaia</h3>
+                <p>Pesquisa sobre os efeitos econômicos, sociais e ambientais do turismo nas comunidades ribeirinhas ao longo do Rio Araguaia.</p>
+                <div class="doc-info">
+                    <span><i class="fas fa-calendar"></i> 2023</span>
+                    <span><i class="fas fa-file-pdf"></i> PDF (2.9 MB)</span>
+                    <span><i class="fas fa-user"></i> UNIFESSPA - Departamento de Turismo</span>
+                </div>
+                <a href="#" class="download-link" data-title="Impacto do Turismo no Rio Araguaia" data-filename="impacto-turismo-rio-araguaia.pdf">
+                    <i class="fas fa-download"></i> Baixar Documento
+                </a>
+            </div>
+        </div>
+        
+        <div class="category category-relatorios animate-in slide-in-bottom">
+            <h2><i class="fas fa-chart-bar"></i> Relatórios Técnicos</h2>
+            
+            <div class="document" data-type="relatorios" data-year="2023" data-author="Secretaria de Saúde">
+                <h3><i class="fas fa-heartbeat"></i> Relatório Anual de Saúde Pública</h3>
+                <p>Relatório completo sobre a situação da saúde pública no município, com dados epidemiológicos, cobertura vacinal e indicadores de qualidade.</p>
+                <div class="doc-info">
+                    <span><i class="fas fa-calendar"></i> 2023</span>
+                    <span><i class="fas fa-file-pdf"></i> PDF (3.2 MB)</span>
+                    <span><i class="fas fa-user"></i> Secretaria de Saúde</span>
+                </div>
+                <a href="#" class="download-link" data-title="Relatório Anual de Saúde Pública" data-filename="relatorio-saude-2023.pdf">
+                    <i class="fas fa-download"></i> Baixar Documento
+                </a>
+            </div>
+            
+            <div class="document" data-type="relatorios" data-year="2022" data-author="Secretaria de Educação">
+                <h3><i class="fas fa-graduation-cap"></i> Desempenho Educacional Municipal</h3>
+                <p>Análise detalhada do desempenho educacional nas escolas municipais, com resultados do IDEB e estratégias de melhoria.</p>
+                <div class="doc-info">
+                    <span><i class="fas fa-calendar"></i> 2022</span>
+                    <span><i class="fas fa-file-pdf"></i> PDF (2.7 MB)</span>
+                    <span><i class="fas fa-user"></i> Secretaria de Educação</span>
+                </div>
+                <a href="#" class="download-link" data-title="Desempenho Educacional Municipal" data-filename="desempenho-educacional-2022.pdf">
+                    <i class="fas fa-download"></i> Baixar Documento
+                </a>
+            </div>
+        </div>
+    </main>
+    
+   <footer>
+        <div class="footer-div">
+            <h3>Entre em contato</h3>
+        <ul type="none" class="footer-list">
+            <li><i class="fa-sharp fa-solid fa-envelope"></i> Email: <a href="mailto:thalysondaniels.felix@gmail.com">thalysondaniels.felix@gmail.com</a></li>
+            <li><i class="fa-sharp fa-solid fa-user"></i> Instagram: <a href="https://www.instagram.com/thalyson.daniel/" target="_blank">@thalyson.daniel</a></li>
+            <li><i class="fa-sharp fa-solid fa-phone"></i> WhatsApp: <a href="https://wa.me/5594992797069" target="_blank">(94) 99279-7069</a></li>
+        </ul>
+    </div>
+
+<hr>
+     <h6>© 2023 Raízes do Araguaia - Todos os direitos reservados. | Desenvolvido para Conceição do Araguaia por <strong>Thalyson Daniel Sousa Felix</strong>, aluno do Instituto Federal do Pará</h6> 
+              
+
+    </footer>
+    
+   <script src="../Inicio/animation.js"></script>
+</body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pontos Turísticos | Raízes do Araguaia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../Imagens/LOGO - Raízes do Araguaia.png" type="image/png" sizes="32x32">
+    <style>
+ @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+    from { transform: translateX(50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromBottom {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.slide-in-left {
+    transform: translateX(-20px);
+}
+
+.slide-in-right {
+    transform: translateX(20px);
+}
+
+.slide-in-bottom {
+    transform: translateY(20px);
+}
+
+.appear {
+    opacity: 1 !important;
+    transform: translate(0, 0) !important;
+}
+
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #78B3A4;
+    z-index: 9999;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in;
+    pointer-events: none;
+}
+
+.animation-demo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #56704B;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.1;
+            color:#2B2318;
+            background-color: #78B3A4;
+            padding: 0;
+        }
+        header {
+            background: #56704B;
+            color: #f5f5f5;
+            text-align: center;
+            position: relative;
+            padding: 1rem;
+            z-index: 1000;;
+        }
+
+        .header-content {
+            position: relative;
+            margin: 0 auto;
+            padding: 3rem 0;
+            border-radius: 0 0 12px 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                   background: linear-gradient(rgba(43, 35, 24, 0.7), rgba(86, 112, 75, 0.7)), 
+                        url('../Imagens/Meia\ Lua.jpg') center/cover;    
+        }
+         h1 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            margin: 1rem 0;
+            text-shadow: 1px 10px 5px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem;
+            font-weight: 500;
+        }
+
+        button {
+            background: transparent;
+            color: #F5F5F5;
+            border: 2px solid #F5F5F5;
+            border-radius: 8px;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(1px);
+        }
+
+        button:hover {
+            background: rgba(255, 255, 255, 0.85);
+            color: #56704B;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 1rem auto;
+            padding: 0 1.5rem;
+        }
+        .attractions {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .attraction-card {
+            background: #F5F5F5;
+            border: 2.5px solid #56704B;
+            border-radius:8px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-image {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .attraction-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 1.2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color:#56704B;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .card-content h3 i {
+            font-size: 1.6rem;
+            color: #78B3A4;
+        }
+
+        .card-content p {
+            margin-bottom: 1.5rem;
+            color: #2B2318;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        .card-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(86, 112, 75, 0.1);
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #78B3A4;
+            font-size: 0.95rem;
+        }
+        .location a{
+            color: #2B2318;
+        }
+
+         footer {
+            background: #56704B;
+            color: #F5F5F5;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+            text-align: center;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        .footer-div {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .footer-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+            list-style: none;
+        }
+        
+        .footer-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .footer-list i {
+            color: #5D9E7E;
+        }
+        
+        hr {
+            border: 0;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+        
+        h6 {
+            padding-top: 1.5rem;
+            font-weight: 400;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        a {
+            color: #F5F5F5;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #5D9E7E;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Pontos Turísticos</h1>
+            <p>Descubra destinos naturais e culturais que fazem de Conceição do Araguaia um ambiente único no coração da Amazônia</p>
+            <a href="../Inicio/menu.html"><button>Voltar para o Início</button></a>
+        </div>
+    </header>
+    <main>
+     <div class="attractions">
+            <div class="attraction-card">
+                <div class="card-image">
+                    <img src="../Imagens/Praia Gaivotas.jpg" alt="Praia das Gaivotas">
+                </div>
+                <div class="card-content">
+                    <h3><i class="fas fa-umbrella-beach"></i> Praia das Gaivotas</h3>
+                    <p>Entre junho e setembro, surge esta praia fluvial no Rio Araguaia com areias brancas e águas doces. Refúgio de gaivotas e visitantes, é ideal para banhos, esportes aquáticos e pôr do sol. Um espetáculo natural que encanta pela simplicidade e beleza durante a estação seca.</p>
+                    <div class="card-info">
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i><a href="https://maps.app.goo.gl/3sn4ZgxAMX8ZHXh87"> Clique para ver o endereço</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="attraction-card">
+                <div class="card-image">
+                    <img src="../Imagens/Praça Fundação Pinturas.jpg" alt="Praça da Fundação">
+                </div>
+                <div class="card-content">
+                    <h3><i class="fas fa-tree"></i> Praça da Fundação</h3>
+                    <p>Ambiente que celebra a história e cultura de Conceição do Araguaia. Contém espaços infantis e áreas de treinamentos calistenicos. Local de eventos cívicos e memórias coletivas, onde passado e presente se encontram sob a sombra das árvores centenárias. </p>
+                    <div class="card-info">
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i><a href="https://maps.app.goo.gl/4hTfxvvivkcuWPYL9"> Clique para ver o endereço</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="attraction-card">
+                <div class="card-image">
+                    <img src="../Imagens/Beiradeiro  (1).jpg" alt="Beiradeiro">
+                </div>
+                <div class="card-content">
+                    <h3><i class="fas fa-volleyball"></i> Beiradeiro </h3>
+                    <p>Complexo à beira-rio que une natureza e lazer: arenas de vôlei de areia, bares rústicos e amplo estacionamento. A vegetação costeira e as águas correntes criam o cenário perfeito para esportes, socialização e conexão com a cultura ribeirinha local.</p>
+                    <div class="card-info">
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i><a href="https://maps.app.goo.gl/4hTfxvvivkcuWPYL9">Clique para ver o endereço</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="attraction-card">
+                <div class="card-image">
+                    <img src="../Imagens/Igreja Matriz (5).jpg" alt="Igreja Matriz">
+                </div>
+                <div class="card-content">
+                    <h3><i class="fas fa-church"></i> Catedral Nossa Senhora da Conceição</h3>
+                    <p>Construída em 1898, esta joia colonial abriga relíquias sacras e história viva. Em frente, uma praça arborizada com quiosques e monumentos convida à contemplação. Patrimônio tombado que testemunha a fé e a evolução arquitetônica da região.</p>
+                    <div class="card-info">
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i><a href="https://maps.app.goo.gl/yKMpfdJwWkJScbs96">Clique para ver o endereço</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="attraction-card">
+                <div class="card-image">
+                    <img src="../Imagens/Praça Capelinha  (1).jpg" alt="Praça da Capelinha">
+                </div>
+                <div class="card-content">
+                    <h3><i class="fas fa-leaf"></i> Praça do Buriti</h3>
+                    <p>Sombreada por árvores, esta praça urbana oferece bancos, jardins e vista privilegiada para o Rio Araguaia. Com quiosques e áreas de descanso, é um convite à contemplação da paisagem fluvial no coração da cidade.</p>
+                    <div class="card-info">
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i><a href="https://maps.app.goo.gl/o8uEDuEGwkx1JznVA">Clique para ver o endereço</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="attraction-card">
+                <div class="card-image">
+                    <img src="../Imagens/Praça Lagoa dos Sapos.jpg" alt="Lagoa dos Patos">
+                </div>
+                <div class="card-content">
+                    <h3><i class="fas fa-tree"></i> Lagoa dos Patos</h3>
+                    <p>Cercado por densa vegetação arbórea em sua área, o ambiente oferece academia pública ao ar livre, pistas para caminhadas e trilhas entre as vegetações, integrando bem-estar e contato com a natureza.</p>
+                    <div class="card-info">
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i><a href="https://maps.app.goo.gl/SQWmXpZP8QUg4Hw97">Clique para ver o endereço</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="attraction-card">
+                <div class="card-image">
+                    <img src="../Imagens/Praça Capelinha.jpg" alt="Lagoa dos Patos">
+                </div>
+                <div class="card-content">
+                    <h3><i class="fas fa-church"></i>Praça da Capelinha</h3>
+                    <p>Núcleo de fé e atividade com a Capela Sagrado Coração de Jesus (aberta diariamente, exceto quartas). Quadras de vôlei e basquete movimentam o local, enquanto o quiosque central vira ponto de encontro para conversas após as missas.</p>
+                    <div class="card-info">
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i><a href="https://maps.app.goo.gl/GbGLqNc9Hi44wLwE8">Clique para ver o endereço</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="attraction-card">
+                <div class="card-image">
+                    <img src="../Imagens/Praça Juventude (2).jpg" alt="Praça da Juventude">
+                </div>
+                <div class="card-content">
+                    <h3><i class="fas fa-basketball"></i> Praça da Juventude</h3>
+                    <p>Epicentro de energia jovem com quadras poliesportivas, área para skatistas e palco de eventos. Espaço que pulsa com campeonatos, shows e a vitalidade da nova geração araguaiense.</p>
+                    <div class="card-info">
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i><a href="https://maps.app.goo.gl/PzkQ2CZMCiLVz7h28">Clique para ver o endereço</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="attraction-card">
+                <div class="card-image">
+                    <img src="../Imagens/Fonte Praça da Bíblia.jpg" alt="Praça da Bíblia">
+                </div>
+                <div class="card-content">
+                    <h3><i class="fas fa-tree"></i> Praça da Bíblia</h3>
+                    <p>Espaço multifuncional que se encontra ao centro da cidade, onde se destacam: fonte central, bancos sombreados, quiosques de lanches, palco para apresentações, playground infantil e jardins. Promove eventos comunitários e momentos de reflexão.</p>
+                    <div class="card-info">
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i><a href="https://maps.app.goo.gl/24nrweSipuKcx8Xo7">Clique para ver o endereço</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="attraction-card">
+                <div class="card-image">
+                    <img src="../Imagens/Centro Espírita 2.jpg" alt="Parque Ecológico do Araguaia">
+                </div>
+                <div class="card-content">
+                    <h3><i class="fas fa-church"></i> Centro Espírita</h3>
+                    <p>Instituição de prática espírita, aonde se promove palestras, atendimento fraterno e trabalhos assistenciais. Seu espaço fomenta o estudo filosófico e a integração comunitária.</p>
+                    <div class="card-info">
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i><a href="https://maps.app.goo.gl/9YES7umvcCjMRWod6">Clique para ver o endereço</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="attraction-card">
+                <div class="card-image">
+                    <img src="../Imagens/Museu - Pró-Arte(2).jpg" alt="Praça da Fundação">
+                </div>
+                <div class="card-content">
+                    <h3><i class="fas fa-museum"></i> Galeria Pró-arte</h3>
+                    <p>Fundada em 30 de maio de 1983, no prédio da antiga Usina Elétrica (1950), esta galeria foi um símbolo de resistência cultural em Conceição do Araguaia. Idealizada por movimentos sociais locais, preservou acervos documentais, artefatos étnicos, obras artísticas e fotografias que contam a construção identitária da cidade.</p>
+                    <div class="card-info">
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i><a href="https://maps.app.goo.gl/nEdM2yZbohytzWzo8"> Clique para ver o endereço</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-div">
+            <h3>Entre em contato</h3>
+        <ul type="none" class="footer-list">
+            <li><i class="fa-sharp fa-solid fa-envelope"></i> Email: <a href="mailto:thalysondaniels.felix@gmail.com">thalysondaniels.felix@gmail.com</a></li>
+            <li><i class="fa-sharp fa-solid fa-user"></i> Instagram: <a href="https://www.instagram.com/thalyson.daniel/" target="_blank">@thalyson.daniel</a></li>
+            <li><i class="fa-sharp fa-solid fa-phone"></i> WhatsApp: <a href="https://wa.me/5594992797069" target="_blank">(94) 99279-7069</a></li>
+        </ul>
+    </div>
+
+<hr>
+     <h6>© 2023 Raízes do Araguaia - Todos os direitos reservados. | Desenvolvido para Conceição do Araguaia por <strong>Thalyson Daniel Sousa Felix</strong>, aluno do Instituto Federal do Pará</h6> 
+              
+
+    </footer>
+    <script src="../Inicio/animation.js"></script>
+</body>
+</html>
