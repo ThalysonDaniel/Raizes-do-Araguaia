@@ -230,8 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         // Configurar o download real
                         downloadBtn.onclick = function() {
-                            // Em um cenário real, aqui seria o link para o arquivo
-                            // Vamos simular o download com um link temporário
+
                             const blob = new Blob([`Conteúdo simulado de ${filename}`], {type: 'application/pdf'});
                             const url = URL.createObjectURL(blob);
                             

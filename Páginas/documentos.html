@@ -15,6 +15,16 @@
             from { transform: translateY(30px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
+         @keyframes slideInFromBottom {
+         from {
+        transform: translateY(30px);
+        opacity: 0;
+        }
+        to {
+        transform: translateY(0);
+        opacity: 1;
+        }
+        }
         
         .animate-in {
             opacity: 0;
@@ -80,7 +90,6 @@
             letter-spacing: 1px;
             margin: 1rem 0 1.5rem;
             text-shadow: 1px 10px 5px rgba(0,0,0,0.2);
-            animation: slideUp 0.7s ease-out forwards;
         }
         
         header p {
@@ -89,27 +98,19 @@
             margin: 0 auto 2.5rem;
             padding: 0 1rem;
             font-weight: 500;
-            animation: slideUp 0.7s ease-out 0.1s forwards;
-            opacity: 0;
         }
 
         .back-btn {
             background: transparent;
-            color:#f5f5f5;
-            border: 2px solid #f5f5f5;
+            color: #F5F5F5;
+            border: 2px solid #F5F5F5;
             border-radius: 8px;
-            padding: 0.8rem 1.8rem;
-            font-size: 1.1rem;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             letter-spacing: 0.5px;
             backdrop-filter: blur(1px);
-            animation: slideUp 0.7s ease-out 0.2s forwards;
-            opacity: 0;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
         }
         
         .back-btn:hover {
@@ -449,10 +450,10 @@
     
     <header>
         <div class="header-content">
-            <h1>Documentos</h1>
+            <H1>Documentos</H1>
             <p>Encontre aqui documentos históricos, leis municipais e estudos sobre nossa região</p>
             <a href="../index.html" class="back-btn">
-                <i class="fas fa-arrow-left"></i> Voltar para o Início
+               Voltar para o Início
             </a>
         </div>
     </header>
